@@ -1,0 +1,7 @@
+*.pyc
+db.sqlite3
+settings.py
+.env
+config/.env
+000*
+.DS_Store

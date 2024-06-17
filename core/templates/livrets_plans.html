@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block html_class %}page-toc{% endblock %}
+{% block bhead %}
+<style>
+
+  body { margin:0; padding:0; }
+
+  .grid__item {
+    transition: transform .2s;
+  }
+  .grid__item:hover {
+    transform: scale(1.1);
+  }
+  .grid__item img {
+    min-height: 250px;
+    object-fit: cover;
+  }
+  @media screen and (min-width: 1200px) {
+    .grid__item img {
+      min-height: 390px;
+      object-fit: cover;
+    }
+  }
+  footer.footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom:0;
+    margin: 0px;
+  }
+  .wrap-container-main:not(.newhome) {
+    margin-bottom: 5rem;
+  }
+
+</style>
+{% endblock %}
+{% block body %}
+
+
+{% include "_navbar.html" %}
+<div class="jumbotron ">
+      <div class="container">
+          <h1 style=""><b>Livrets et Plans</b></h1>
+         <p class="sidelines" aria-hidden="true"><i class="fa fa-phi" aria-hidden="true"></i></p>
+         <a rel="start" data-load-display="" href="/"><i class="fa fa-fw fa-home" aria-hidden="true"></i> Retour à l'accueil</a>
+
+   </div>
+</div>
+  <div class="wrap-container-main">
+    <div class="container">
+      <div class="grid row">
+        <p class="sidelines" aria-hidden="true" style="margin-top:1em">
+                     Livrets
+        </p>
+        {% for l in livrets %}
+        <div class="grid__item col-xs-6 col-sm-4 col-lg-3">
+          <div class="panel panel-default">
+            <a href="{{l.url}}">
+              <img class="img-responsive" src="/static/melenchon2022/{{l.image}}" />
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+        <div class="grid row">
+
+        <p class="sidelines" aria-hidden="true" style="margin-top:1em">
+                    Plans
+        </p>
+        {% for p in plans %}
+        <div class="grid__item col-xs-6 col-sm-4 col-lg-3">
+          <div class="panel panel-default">
+            <a href="{{p.url}}">
+              <img class="img-responsive" src="/static/melenchon2022/{{p.image}}" />
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+
+
+    </div>
+    </div>
+
+</div>
+
+
+
+
+<div id="footer_container">
+{% include '_footer.html' %}
+</div>
+
+
+
+
+
+
+{% endblock %}

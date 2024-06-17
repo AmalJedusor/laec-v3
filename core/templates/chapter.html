@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block html_class %}page-chapter  theme-part theme-part-{{subject.part_number}} {% endblock %}
+
+
+{% block body %}
+
+<body id="body">
+    {% include "_jump_link.html" %}
+    {% include "_navbar.html" %}
+    <div class="theme-part theme-part-{{subject.part_number}} jumbotron" aria-hidden="true">
+        <div class="container">
+            <h1><i
+                    class="fa fa-fw fa-pull-right fa-3x icon-part-{{ subject.part_number }} visible-lg-inline-block visible-md-inline-block"></i>
+
+
+                <span class="alternate">{{subject.sub_title}}</span>
+                <b class="text-balance" tabindex="0">{{ subject.main_title }}</b>
+            </h1>
+
+            <p class="sidelines"><i class="fa icon-part-{{ subject.part_number }}"></i></p>
+            <a rel="contents" data-load-display href="/sommaire" title="Retour au sommaire"><i
+                    class="fa fa-arrow-left"></i><span class="hidden-xs"> Table des matières</span></a>
+        </div>
+    </div>
+    <div class="wrap-container-main" id="main">
+        <div class="container container-main">
+            <div class="row">
+                {% include '_sectionsidebar.html' %}
+                <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
+
+                    <hr />
+                    <section class="content-text parsedown">
+                        <div class="semi-lead subject-foreword">
+                            <p>
+                               {{ subject.content |linebreaksbr | safe}}
+                            </p>
+                         </div>
+                    </section>
+                    {% if subject.number != "0" %}
+                    <section class="part-toc theme-part-{{subject.part_number}}">
+                        <header class="page-header">
+                            <h2 class="h4"><i class="fa fa-fw fa-list-ul"></i> Sommaire du chapitre</h2>
+                        </header>
+                        <nav class="toc" role="navigation">
+                            <ul class="toc list-group">
+                                {% for article in subject.article_set.all %}
+                                <a class="list-group-item toc-section toc-chapter-{{subject.part_number}} no-outline"
+                                    href="/section/{{article.number}}/{{article.slug}}">
+                                    <span class="label label-default">{{article.number}}</span> {{article.title}}
+                                </a>
+
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </section>
+                    {% endif %}
+
+
+
+                </article>
+
+            </div>
+
+            <a href="#body" id="back-to-top" data-do-scroll-to="800" title="Retour en haut de la page"><i
+                    class="fa fa-arrow-up" aria-hidden="true"></i><span> Retour en haut de page</span></a>
+        </div>
+    </div>
+    {% include '_footer.html' %}
+
+</body>
+{% endblock %}

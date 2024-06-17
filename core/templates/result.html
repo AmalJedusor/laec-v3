@@ -1,0 +1,60 @@
+
+
+  <!--{{ result.keywords|join:", " }}-->
+
+  {% if result.entity == 'externalpage' %}
+  <a href="{{ result.url }}"
+     class="resultat"
+     title="{{ result.title }}">
+     <article>
+    <img src="/static/melenchon2022/{{ result.image }}" style="height:15rem;">
+     <h2 class="h4">
+       {{ result.doctype }} : {{ result.title }} </h2>
+
+  <cite>
+     <i class="fa fa-fw fa-external-link" aria-hidden="true"></i> {{ result.url }}
+
+  </cite>
+
+  <p class="highlights">...{% if result.meta.highlight.content %}
+      {{result.meta.highlight.content | first | safe }}
+      {% elif result.meta.highlight.content_auto %}
+          {{result.meta.highlight.content_auto | first | safe }}
+      {% else %}
+      {{result.content | striptags | safe |slice:":300" }}
+      {% endif %}
+      ...</p>
+      </article>
+  </a>
+{% else %}
+  <a href="/{{ result.entity }}/{{ result.number }}/{{ result.slug }}?q={{ result.keywords|join:"," }}" class="resultat"
+     title="{{ result.entity }} de l'Avenir en Commun : « {{ result.title }} »">
+     <article>
+     <h2 class="h4">
+       {%if result.meta.highlight.title %}
+       {{ result.meta.highlight.title | first  | safe }}
+       {%elif result.meta.highlight.title_auto %}
+       {{ result.meta.highlight.title_auto | first  | safe }}
+       {% else %} {{result.title | safe}}
+       {% endif %}  </h2>
+
+  <cite>
+    <i class="fa fa-fw icon icon-part-{{result.part_number}}" aria-hidden="true"></i>
+     {% if result.entity == 'chapitre' %}
+      https://laec.fr/c{{result.number}}
+     {% else %}
+      https://laec.fr/s{{result.number}}
+     {% endif %}
+  </cite>
+
+  <p class="highlights">...{% if result.meta.highlight.content %}
+      {{result.meta.highlight.content | first | safe }}
+      {% elif result.meta.highlight.content_auto %}
+          {{result.meta.highlight.content_auto | first | safe }}
+      {% else %}
+      {{result.content | striptags | safe |slice:":300" }}
+      {% endif %}
+      ...</p>
+    </article>
+  </a>
+{% endif %}

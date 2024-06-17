@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="page js not-logged-in theme-frontend {% block html_class %}{% endblock %} svg localstorage audio csstransitions document-ready" lang="fr">
+    <!--
+      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+      ░░░█░░░█▀█░█▀▀░█▀▀░░░░█▀▀░█▀▄░░░░
+      ░░░█░░░█▀█░█▀▀░█░░░░░░█▀▀░█▀▄░░░░
+      ░░░▀▀▀░▀░▀░▀▀▀░▀▀▀░▀░░▀░░░▀░▀░░░░
+      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+      +===== L'Avenir En Commun ======+
+
+      -->
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title> {% if title is None %}LAEC.fr - Le programme de Jean-Luc Mélenchon pour l'Union Populaire{% else %} {{title}} {% endif %} </title>
+        <meta name="description" content="LAEC.fr (abréviation de « L'Avenir En Commun »), c'est le programme en ligne de Jean-Luc Mélenchon et de l'Union Populaire pour l'élection présidentielle de 2022." />
+
+        <!-- Icônes et autres -->
+        <script src="https://kit.fontawesome.com/5fa0e3eada.js" crossorigin="anonymous"></script>
+        <link rel="apple-touch-icon-precomposed" href="http://laec.fr/img/application/favicon-152.png" />
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="/img/application/favicon-144.png" />
+        <meta name="msapplication-tooltip" content="L'Avenir En Commun, le programme pour l'Union Populaire en ligne" />
+        <meta name="msapplication-config" content="/misc/ieconfig.xml" />
+        <meta name="application-name" content="LAEC.fr" />
+        <!-- Opensearch -->
+        <link rel="search" type="application/opensearchdescription+xml" title="LAEC.fr" href="http://laec.fr/opensearch.xml" />
+        <!-- Microdonnées JSON-LD -->
+        <!-- Meta social -->
+        <meta property="og:site_name" content="LAEC.fr" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:type" content="{{entity}}" />
+        <meta property="og:title" content= "{{titre}}" />
+        <meta property="og:description" content="{{description}}" />
+        <meta property="og:image" content="https://{{ host }}/static/visuels/{{ shortlink }}.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="628" />
+        <meta property="og:url" content="https://{{ host }}/{{ shortlink }}/" />
+        <meta property="fb:app_id" content="secret" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@yourtwitterid" />
+        <meta name="twitter:title" content="{{titre}}">
+        <meta name="twitter:description" content="{{description}}">
+        <meta name="twitter:image" content="https://{{ host }}/static/visuels/{{ shortlink }}.jpg" />
+        <!-- Feuilles de styles -->
+        <link rel="stylesheet" href="/static/app.css" />
+        <!--[if lt IE 9]>
+            <script src="/js/static/ie-html5shiv-respond.min.js"></script>
+        <![endif]-->
+        <link
+            rel="icon"
+            type="image/png"
+            href="data:image/png;base64,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"
+        />
+    </head>
+    <script>
+      window.location = "{{ redirect | safe }}";
+    </script>
+</html>

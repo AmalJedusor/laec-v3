@@ -1,0 +1,3 @@
+[console_scripts]
+md_to_json = markdown_to_json.scripts.md_to_json:main
+

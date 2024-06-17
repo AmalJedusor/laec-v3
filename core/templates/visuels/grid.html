@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% block html_class %}page-toc{% endblock %}
+{% block bhead %}
+<!-- <link rel="stylesheet" href="/static/visuels/grid/grid.css"> -->
+<script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.js"></script>
+<!--<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>-->
+<style>
+
+  body { margin:0; padding:0; }
+
+  .grid__item {
+    transition: transform .2s;
+  }
+  .grid__item:hover {
+    transform: scale(1.1);
+  }
+  footer.footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom:0;
+    margin: 0px;
+  }
+  .grid-p .form-control {
+      font-size: 16px;
+      margin-bottom: 2px;
+      margin-top: 2px;
+  }
+  .panel.panel-filters {
+    margin-top: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin-bottom: 0px;
+  }
+  .panel-default.panel-filters {
+    border-color: transparent;
+  }
+  .panel-filters {
+    background-color: transparent;
+    color: #FFFFFF;
+  }
+  .wrap-container-main:not(.newhome) {
+    margin-bottom: 5rem;
+  }
+
+
+#visusearch_button {
+    padding-top: 7px;
+    padding-bottom: 4px;
+}
+span.subtitle {
+  font-size: 16.5px;
+}
+</style>
+{% endblock %}
+{% block body %}
+
+{% include "_jump_link.html" %}
+{% include "_navbar.html" %}
+<div class="jumbotron ">
+      <div class="container">
+        <div class="panel panel-default panel-filters">
+          <div class="panel-body">
+
+            <div class="container-fluid mt-4">
+
+              <section class="row grid-p">
+
+
+                <div class="col-xs-4 col-md-1 col-lg-1" id="main">
+                  <span class="subtitle">Chapitre&nbsp;: </span>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-7">
+                  <select onchange="search();" id="visuchap" class="form-control border-20" data-val="true" data-val-number="The field Chapitre must be a number."
+                    data-val-required="The Chapitre field is required." id="Chapitre" name="Chapitre">
+                    <option {% if p == '0' %}selected="selected"{% endif %} value="0">Tous</option>
+                    {% for chapter in chapitres %}
+                    <option {% if chapter.number == p %}selected="selected"{% endif %} value="{{ chapter.number }}">{{ chapter.title }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-xs-12 col-md-4 col-lg-5">
+                  <!--<input type="text" id="visusearch" autocomplete="off" class="form-control" placeholder="Ex: Partage, écologie…"></span></div>-->
+                  <div class="input-group">
+                    <input onkeypress="handle(event);" id="visusearch" class="form-control border-20" value="{{q}}" placeholder="Ex: école">
+                    <span class="input-group-btn border-20">
+                    <button onclick="search();" id="visusearch_button" class="btn btn-default"><span class="sr-only">Rechercher visuel</span><i class="fa fa-fw fa-search" aria-hidden="true"></i></button>
+                    </span>
+                  </div>
+
+                </div>
+
+
+              </section>
+
+            </div>
+          </div>
+      </div>
+         <p class="sidelines" aria-hidden="true"><i class="fa fa-phi" aria-hidden="true"></i></p>
+         <a rel="start" data-load-display="" href="/"><i class="fa fa-fw fa-home" aria-hidden="true"></i> Retour à l'accueil</a>
+
+   </div>
+</div>
+  <div class="wrap-container-main">
+    <div class="container">
+      <div class="grid row">
+      {% include 'visuels/grid_page.html' %}
+    </div>
+    </div>
+
+</div>
+
+
+
+<script>
+
+  function handle(e){
+          if(e.keyCode === 13){
+              e.preventDefault(); // Ensure it is only this code that runs
+              search();
+          }
+  }
+  function search() {
+    textsearch = document.getElementById('visusearch').value;
+    chapsearch = document.getElementById('visuchap').selectedIndex;
+    window.location = '/visuels/'+chapsearch+'?q='+textsearch;
+  }
+
+  function getPath() {
+      // console.log(this.loadCount);
+      return '/visuels/{{p}}/'+ (2+this.loadCount)+ '?q={{q}}';
+  }
+  //-------------------------------------//
+
+  let grid = document.querySelector('.grid');
+
+
+  //-------------------------------------//
+  // init Infinte Scroll
+
+  let infScroll = new InfiniteScroll( grid, {
+    path: getPath,
+    append: '.grid__item',
+  });
+
+
+
+</script>
+<div id="footer_container">
+{% include '_footer.html' %}
+</div>
+
+
+
+
+
+
+{% endblock %}

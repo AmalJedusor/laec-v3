@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block html_class %}page-toc{% endblock %}
+{% block body %}
+<body id="body">
+   {% include "_jump_link.html" %}
+   {% include "_navbar.html" %}
+   <div class="jumbotron">
+      <div class="container">
+         <h1><b><i class="fa fa-fw fa-list-ul" aria-hidden="true"></i> Table des matières </b></h1>
+         <p class="sidelines" aria-hidden="true"><i class="fa fa-phi"></i></p>
+         <a rel="start" data-load-display="" href="/"><i class="fa fa-fw fa-home" aria-hidden="true"></i> Retour à l'accueil</a>
+      </div>
+   </div>
+   <div class="wrap-container-main" id="main">
+      <div class="container container-main">
+         <div class="row">
+         {% include '_sidebar.html' %}
+         <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
+            <nav class="toc list-group" role="navigation">
+            {% for part in parts %}
+            <a
+               id="partie-{{part.number}}"
+               class="list-group-item toc-chapter toc-chapter-{{part.number}} no-outline"
+               href="/partie/{{part.number}}/{{part.slug}}">
+               <i class="fa fa-fw fa-2x fa-pull-right icon icon-part-{{part.number}}" aria-hiddent="true"></i>
+                                 <h3>{{part.title}}</h3>
+            </a>
+            <div class="list-group-item list-group-separator" aria-hidden="true">
+            </div>
+                  {% for article in part.article_set.all %}
+                  <a
+                     class="list-group-item toc-section toc-chapter-{{part.number}} no-outline"
+                     href="/section/{{article.number}}/{{article.slug}}">
+                     <span class="label label-default">{{article.number}}</span> {{article.title}}
+                  </a>
+                  {% endfor %}
+                  <div class="list-group-item list-group-separator" aria-hidden="true">
+
+                  </div>
+            <div class="list-group-item list-group-separator" aria-hidden="true">
+               <p class="sidelines"><i class="fa fa-fw fa-scissors"></i></p>
+            </div>
+            {% endfor %}
+            <a href="#body" id="back-to-top" data-do-scroll-to="800" title="Retour en haut de la page" class="">
+               <i class="fa fa-arrow-up" aria-hidden="true"></i>
+               <span> Retour en haut de page</span>
+            </a>
+         </div>
+      </div>
+      {% include '_footer.html' %}
+
+   </body>
+</html>
+{% endblock body %}

@@ -1,0 +1,61 @@
+{% extends 'base.html'  %}
+{% block html_classes %} page-the-end page-aos{% endblock %}
+{% block body %}
+<body id="body" class="fin" data-aos-easing="ease-out-back" data-aos-duration="1300" data-aos-delay="0">
+  <div class="wrap-all-visible">
+    {% include "_navbar.html" %}
+{% block jumbotron %}
+  <div class="jumbotron jumbotron-massive">
+    <div class="container">
+      <h1 class="text-center-md">
+        <b class="text-balance">Voilà, c'est la fin.</b>
+        <span class="alternate text-balance">Ou peut-être le début d'autre chose…</span>
+      </h1>
+
+      <p class="sidelines" aria-hidden="true">
+        <i class="fa fa-flag-checkered"></i>
+      </p>
+
+      <p>
+        <i class="fa fa-fw fa-2x fa-pull-right fa-comments-o"></i>
+        <span>Si dans ce que vous venez de lire, des choses vous ont <em>fait plaisir</em>, <em>interpelé</em> ou <em>mis en colère</em>, n'hésitez pas à en <strong>discuter</strong> autour de vous.</span>
+      </p>
+
+      <p>
+        <i class="fa fa-fw fa-2x fa-pull-left fa-thumbs-o-up"></i>
+        Vous <strong>approuvez ce programme</strong> et souhaitez le voir appliqué&nbsp;? Alors aidez l'<a class="external" href="https://melenchon2022.fr/" title="Soutenir la candidature Union Populaire">Union Populaire</a>&nbsp;!
+      </p>
+
+      <p>
+        <small>Vous pouvez aussi <strong>partager</strong> ce site : peut-être connaissez-vous des gens sur <a class="share-link" data-popup-dimensions="560,430" href="https://www.facebook.com/sharer/sharer.php?u={{baseurl}}" title="Partagez ce site sur Facebook" data-network="Facebook">Facebook</a> ou <a data-popup-dimensions="430,284" href="https://twitter.com/home?status=" class="share-link" data-network="Twitter" title="Partagez ce site sur Twitter ">Twitter</a> que cela intéresserait…</small>
+      </p>
+
+      <p class="sidelines" aria-hidden="true">
+        <i class="fa fa-flag-checkered"></i>
+      </p>
+
+      <p class="linklist text-center">
+        <a title="Consulter une section du programme au hasard" data-load-display href="/hasard"><i class="fa fa-fw fa-random" aria-hidden="true"></i> Revoir une page au hasard</a>
+
+        <span class="link-separator">•</span>
+
+        <a data-load-display href="/sommaire" title="Retour au sommaire"><i class="fa fa-fw fa-list-ul"></i> Retour à la table des matières</a>
+      </p>
+    </div>
+  </div>
+  {% include '_footer.html' %}
+
+</div>
+{% endblock jumbotron %}
+<div class="total-loading-backdrop">
+  <div class="loading-animation">
+      <div class="loading-bar"></div>
+      <div class="loading-bar"></div>
+      <div class="loading-bar"></div>
+      <div class="loading-bar"></div>
+  </div>
+</div>
+<script src="/static/app.js"></script>
+{% endblock %}
+
+</body>

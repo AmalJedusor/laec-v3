@@ -1,0 +1,7 @@
+{{ object.content }}
+{{ object.title }}
+{{ object.url }}
+{{ object.entity }}
+{{ object.doctype }}
+{{ object.image }}
+{{ object.id }}

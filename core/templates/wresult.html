@@ -1,0 +1,23 @@
+{% spaceless %}
+{% comment %}
+   {% set link_icon = 'link' %}
+   {% if result.entity is chapter %}
+   {% set link_icon = result.entity.icon ?: 'phi' %}
+   {% elseif result.entity is section %}
+   {% set link_icon = result.entity.chapter.icon %}
+   {% endif %}
+    {% endcomment %}
+
+<li class="list-group-item">
+   <a href="{{ result.url }}" data-load-display
+      title="{{ result.entity|upper }} de {{ site_long_name }} : « {{ result.entity.title }} »">
+      <h2 class="h4">{{ result.title }}</h2>
+   </a>
+   <cite>
+      <i class="fa fa-fw fa-{{ link_icon }}" aria-hidden="true"></i> {{ result.short_url }}
+   </cite>
+   {% if result.highlights %}
+   <p class="highlights">{{ result.highlights|truncatechars:300 }}</p>
+   {% endif %}
+</li>
+{% endspaceless %}

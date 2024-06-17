@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block html_class %}page-part theme-part theme-part-{{subject.number}} {% endblock %}
+
+{% block body %}
+
+<body id="body">
+    {% include "_jump_link.html" %}
+    {% include "_navbar.html" %}
+    <div class="theme-part-{{subject.number}} jumbotron" aria-hidden="true">
+        <div class="container">
+            <h1><i
+                    class="fa fa-fw fa-pull-right fa-3x icon-part-{{subject.number }} visible-lg-inline-block visible-md-inline-block"></i>
+
+
+
+                <b class="text-balance" tabindex="0">{{ subject.main_title }}</b>
+            </h1>
+
+            <p class="sidelines"><i class="fa icon-part-{{ subject.number }}"></i></p>
+            <a rel="contents" data-load-display href="/sommaire" title="Retour au sommaire"><i
+                    class="fa fa-arrow-left"></i><span class="hidden-xs"> Table des matières</span></a>
+        </div>
+    </div>
+    <div class="wrap-container-main" id="main">
+        <div class="container container-main">
+            <div class="row">
+                {% include '_sectionsidebar.html' %}
+                <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
+                    <section class="actions actions-c">
+                        {% include '_partager_partie.html' %}
+                    </section>
+                    <hr />
+                    <section class="content-text parsedown">
+                        <div class="subject-body">
+                            <div class="semi-lead subject-foreword">
+                                <p tabindex="0">
+
+                                   {{ subject.forewords | safe | linebreaksbr  }}
+                             </p>
+                        </div>
+                    </section>
+                    {% if subject.number != "0" %}
+                    <section class="theme-part-{{subject.number}}">
+                        <header class="page-header addenda-header">
+                            <h2 class="h4" id="addenda"><i class="fa fa-fw fa-list-ul"></i> Sommaire de la partie</h2>
+                        </header>
+                        <nav class="toc" role="navigation">
+                            <ul class="toc list-group">
+                                {% for article in subject.article_ordered %}
+                                <a class="list-group-item toc-section toc-chapter-{{subject.number}} no-outline"
+                                    href="/section/{{article.number}}/{{article.slug}}">
+                                    <span class="label label-default">{{article.number}}</span> {{article.title}}
+                                </a>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </section>
+                    {% endif %}
+
+
+
+                </article>
+
+            </div>
+
+            <a href="#body" id="back-to-top" data-do-scroll-to="800" title="Retour en haut de la page"><i
+                    class="fa fa-arrow-up" aria-hidden="true"></i><span> Retour en haut de page</span></a>
+        </div>
+    </div>
+    {% include '_footer.html' %}
+
+</body>
+{% endblock %}

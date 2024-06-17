@@ -1,0 +1,9 @@
+# Titre
+
+Ordonner le monde
+# Forewords
+
+« Chaque période du développement humain suscite son genre particulier de conflits humains, son type propre de problèmes, que la force seule serait apparemment capable de résoudre. Et, chose paradoxale, en chaque occurrence la force s'est révélée incapable de résoudre réellement le problème. »
+*Isaac Asimov, Les Robots, 1950*
+
+Les guerres aux quatre coins du monde nous rappellent chaque jour l’urgence de la paix. Il nous faut bâtir une France indépendante, insoumise aux dogmes de la Commission européenne et à l’hégémonie des États-Unis d’Amérique. C’est le préalable incontournable pour que notre pays participe de sa contribution positive au peuple humain. Nous avons à construire de nouveaux horizons de progrès écologique pour protéger les biens communs de l’humanité et nous porter aux nouvelles frontières que sont l’espace, les mers et le virtuel.

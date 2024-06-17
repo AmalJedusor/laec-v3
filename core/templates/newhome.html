@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% block html_class %}page-index page-aos{% endblock %}
+{% block body %}
+
+<body id="body">
+  
+    <div class="wrap-all-visible-v2">
+        {% include "_navbar.html" %}
+        <div class="jumbotron jumbotron-massive newhome">
+            <div class="jumbotron jumb-bg">
+                <svg class="left" width="2074" height="1469" viewBox="0 0 2074 1469" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0.812256 294.805C241.833 98.2182 804.555 -197.692 1127.28 191.365C1530.69 677.686 961.166 1321.56 2073.24 1467.57"
+                        stroke="white" stroke-opacity="0.1" />
+                </svg>
+                <svg width="573" height="2125" viewBox="0 0 573 2125" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M571.819 1.00002C275.032 167.983 -230.685 624.088 120.741 1112.64C472.167 1601.19 208.688 1990.44 33.0209 2124"
+                        stroke="white" stroke-opacity="0.1" />
+                </svg>
+                <svg class="glass" width="779" height="999" viewBox="0 0 779 999" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M146.935 498.965C173.495 696.833 60.1548 825.804 0.164764 865.556C35.4372 972.723 126.999 1116.15 211.064 832.553C316.147 478.052 400.368 514.974 582.752 499.085C765.136 483.196 600.883 439.062 619.516 262.056C634.423 120.452 731.598 35.3401 778.322 10.4845L598.129 -138.443C535.331 -168.427 369.258 -179.247 207.353 17.344C4.97211 263.083 113.735 251.63 146.935 498.965Z"
+                        fill="url(#paint0_linear_4_118)" fill-opacity="0.15" />
+                    <defs>
+                        <linearGradient id="paint0_linear_4_118" x1="134" y1="796.5" x2="593.393" y2="293.073"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white" stop-opacity="0" />
+                            <stop offset="0.369792" stop-color="white" stop-opacity="0.41" />
+                            <stop offset="0.645833" stop-color="white" stop-opacity="0.44" />
+                            <stop offset="1" stop-color="white" stop-opacity="0" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <svg width="2948" height="1206" viewBox="0 0 2948 1206" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M2947.35 26.1381C2657.73 -38.1958 2074.15 -20.8809 2056.82 563.049C2035.15 1292.96 1833.17 663.522 1257.4 486.219C796.783 344.377 227.53 906.183 0.480888 1204.82"
+                        stroke="white" stroke-opacity="0.1" />
+                </svg>
+                <svg class="right" width="1493" height="1713" viewBox="0 0 1493 1713" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1492 1C1133.81 21.4146 444.21 214.014 551.294 821.093C658.379 1428.17 229.05 1667.98 1 1712"
+                        stroke="white" stroke-opacity="0.1">
+                        <animate attributeName="opacity" dur="0.05s" values="0;1" begin="an2.end-0.05s" fill="freeze" />
+                    </path>
+                </svg>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 text-xs-center">
+                        <h1><span class="woa">L</span>'<span class="woa">a</span>venir <br class="rm-mobile"><span class="woa">e</span>n <br><span class="woa">c</span>ommun</h1>
+                        <hr>
+                        <p>L'harmonie des êtres humains
+                            <br>entre eux et avec la nature.</p>
+                        <a class="btn btn-primary btn-cta btn-lg" data-track-event="Appel à l'action"
+                            data-event-action="Consulter" data-event-name="Accueil" href="/sommaire"
+                            data-load-display="" title="Table des matières du programme">
+                            <!--<button class="btn btn-primary btn-cta btn-lg">-->Consulter <i
+                                class="fa fa-fw fa-arrow-right" aria-hidden="true"></i>
+                            <!--</button>--></a>
+                        <p class="edition seuil">Texte © Éditions du Seuil, 2021</p>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 text-xs-center text-right jlm">
+                        <img style="--op: 0.2" class="text-left" src="/static/assets/svg/jlm.svg?o=0.5" alt="melenchon">
+                        <p>Le programme pour <br>l' Union Populaire 2022</p>
+                        <p class="edition">Version en <span id="ligne">ligne</span> – Réalisée par le <a href="https://discord-insoumis.fr/">Discord insoumis</a></p>
+                    </div>
+                </div>
+            </div>
+            <svg class="wave1" width="100%" height="50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,64L34.3,58.7C68.6,53,137,43,206,74.7C274.3,107,343,181,411,176C480,171,549,85,617,74.7C685.7,64,754,128,823,128C891.4,128,960,64,1029,53.3C1097.1,43,1166,85,1234,96C1302.9,107,1371,85,1406,74.7L1440,64L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path>
+              </svg>
+            <a href="#laec-def" tabindex="-1">
+                <svg class="wheel-svg" width="40px" height="100%" viewBox="0 0 247 390" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+                    <path id="wheel" d="M123.359,79.775l0,72.843" style="fill:none;stroke:#fff;stroke-width:20px;" />
+                    <path id="mouse"
+                        d="M236.717,123.359c0,-62.565 -50.794,-113.359 -113.358,-113.359c-62.565,0 -113.359,50.794 -113.359,113.359l0,143.237c0,62.565 50.794,113.359 113.359,113.359c62.564,0 113.358,-50.794 113.358,-113.359l0,-143.237Z"
+                        style="fill:none;stroke:#fff;stroke-width:20px;" />
+                </svg>
+            </a>
+        </div>
+        <div class="wrap-container-main newhome" data-track-scroll="Section">
+            <div class="laec-def-lines">
+                <svg width="2076" height="884" viewBox="0 0 2076 884" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1 25.7183C209.062 -38.5959 689.874 -16.8426 948.628 584.684C1207.38 1186.21 1489.59 740.74 1598.35 442.814C1627.67 342.56 1764.04 122.757 2075 45.5799"
+                        stroke="#3F2682" stroke-opacity="0.1" />
+                </svg>
+                <svg width="1845" height="465" viewBox="0 0 1845 465" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 410C122.5 229.833 498.2 -98.4 1029 30C1692.5 190.5 1336 424.5 1844 464.5"
+                        stroke="#3F2682" stroke-opacity="0.15" />
+                </svg>
+            </div>
+            <section id="laec-def" class="container laec-def" tabindex="0">
+                <div class="row">
+                    <div class="col-md-6 offset-md-6 title">
+                        LAEC en trois points
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 content aos-init aos-animate" data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom" data-aos-delay="200">
+                        <span class="violet-underline">LAEC.fr</span> (abréviation de « L'<span
+                            class="violet-underline">A</span>venir <span class="violet-underline">E</span>n <span
+                            class="violet-underline">C</span>ommun »), c'est le programme porté par <span
+                            class="violet-underline">Jean-Luc Mélenchon</span>. Initialement publié en décembre 2016,
+                        il est mis à jour en novembre 2021 et est accessible gratuitement en ligne de manière simple et claire.
+                    </div>
+
+
+
+                    <div class="col-md-4 content aos-init aos-animate" data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom" data-aos-delay="300">
+                        <span class="violet-underline">LAEC.fr</span>, c'est aussi le moyen pour les convaincus de
+                        pouvoir <span class="violet-underline">partager</span> facilement chaque élement sur leurs réseaux sociaux préférés,
+                        du chapitre jusqu'à la mesure. Un outil idéal pour répondre aux questions
+                        que se posent les gens sur le <span class="violet-underline">programme</span> !
+                    </div>
+
+                    <div class="col-md-4 content aos-init aos-animate" data-aos="fade-up"
+                        data-aos-anchor-placement="center-bottom" data-aos-delay="400">
+                        <span class="violet-underline">LAEC.fr</span> est le produit d'une initiative indépendante du <a
+                            href="https://discord-insoumis.fr/"><u>Discord Insoumis</u></a>.
+
+                        Notre objectif est la diffusion maximale du programme et la création d'un lieu de <span
+                            class="violet-underline">partage</span> aussi bien à destination des militants que du grand
+                        public.
+                    </div>
+
+                </div>
+                <div class="row btn-def">
+                    <div class="col-md-6 offset-md-6">
+
+                        <a class="btn btn-primary btn-cta btn-lg" data-track-event="Appel à l'action"
+                            data-event-action="Consulter" data-event-name="Accueil" href="/sommaire"
+                            data-load-display="" title="Table des matières du programme">
+                            <!--<button class="btn btn-primary btn-cta btn-lg">-->Allez, c’est parti !
+                            <i class="fa fa-fw fa-arrow-right" aria-hidden="true"></i>
+                            <!--</button>--></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="foot">
+            <svg width="2076" height="1044" viewBox="0 0 2076 1044" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1043C7.70113 1036.3 315.953 352.801 945.859 386.305C1575.77 419.81 1873.97 376.254 2075 1"
+                    stroke="white" stroke-opacity="0.1" />
+            </svg>
+            <div class="container-fluid p-container">
+                <svg class="p-more-top" preserveAspectRatio="none" width="100%" height="128" viewBox="0 0 1280 128"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="1280" height="128" transform="translate(1280 128) rotate(-180)" fill="#3F2682" />
+                    <path
+                        d="M1280 64L1237.33 66.12C1194.67 68.4 1109.33 72.4 1024 72.52C938.667 72.4 853.333 68.4 768 68.28C682.667 68.4 597.333 72.4 512 68.28C426.667 64 341.333 51.2 256 55.48C170.667 59.6 85.3333 81.2 42.6667 91.72L-9.53674e-06 102.4V2.28882e-05H42.6667C85.3333 2.28882e-05 170.667 2.28882e-05 256 2.28882e-05C341.333 2.28882e-05 426.667 2.28882e-05 512 2.28882e-05C597.333 2.28882e-05 682.667 2.28882e-05 768 2.28882e-05C853.333 2.28882e-05 938.667 2.28882e-05 1024 2.28882e-05C1109.33 2.28882e-05 1194.67 2.28882e-05 1237.33 2.28882e-05H1280V64Z"
+                        fill="white" />
+                </svg>
+                <div class="container p-more" tabindex="0">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-6 title">
+                            Pour les plus curieux
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row content">
+                        <div class="col-md-12">
+                            <p class="aos-init aos-animate" data-aos="fade-up" data-aos-anchor-placement="center-bottom"
+                                data-aos-delay="200"">
+                                Le site <span class="red-underline">LAEC.fr</span> a été développé en utilisant le
+                                cadriciel
+                                <a href="https://symfony.com/"><u>Symfony</u></a> à l'origine mais relancé en
+                                <a href="https://www.djangoproject.com/"><u>Django</u></a> en 2021. Pour sa présentation, le site bénéficie des services de
+                                <a href="https://getbootstrap.com/"><u>Bootstrap</u></a>,
+                                de belles
+                                icônes fournies par <a href="https://fontawesome.com/"><u>FontAwesome</u></a> modifiées et compilées grâce à <a href="https://icomoon.io/"><u>IcoMoon</u></a>.
+                                <br><br>
+                                Le site est développé par une équipe indépendante du <a href="https://discord-insoumis.fr/"><u>Discord Insoumis</u></a>. Le contenu du
+                                site
+                                n'engage que l'équipe de <span class="red-underline">LAEC.fr</span>, mais pas l'Union Populaire dans son ensemble.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        {% include '_footer.html' %}
+    </div>
+
+
+</body>
+{% endblock %}

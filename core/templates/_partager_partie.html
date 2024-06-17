@@ -1,0 +1,55 @@
+<section class="actions actions-s">
+    <div class="btn-toolbar" role="toolbar" aria-label="Actions disponibles pourcette section">
+        <div class="btn-group"></div>
+        <div class="btn-group">
+            <button title="Lien direct vers la section et boutons de partage sur les réseaux sociaux"
+                class="btn btn-defaultshare-collapser collapsed" data-target="#panel-c-share-{{subject.number}}" type="button"
+                aria-controls="panel-c-share-{{subject.number}}" aria-expanded="false" data-toggle="collapse"><i
+                    class="fa fa-fw fa-share-alt"></i>&nbsp;<span
+                    class="visible-lg-inline">Partager</span></button>
+        </div>
+
+        <div class="btn-group pull-right js-only"></div>
+    </div>
+    <div class="collapsableshare-collapsable collapse" id="panel-c-share-{{subject.number}}">
+        <div class="panel-wrap">
+            <div class="panel panel-default">
+                <div class="panel-heading">Faites tourner cette partie &nbsp;!</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-5"><label for="share-control-c-{{subject.number}}"><i class="fa fa-fw fa-link"
+                                    aria-hidden="true"></i>Lien court direct</label>
+                            <div class="form">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon"><i class="fa fa-fw fa-anchor"
+                                                aria-hidden="true"></i></div><input type="text" id="share-control-c-{{subject.number}}"
+                                            class="form-control share-control" readonly="readonly"
+                                            value="https://{{host}}/p{{subject.number}}" autofocus="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-7"><label><i class="fa fa-fw fa-share" aria-hidden="true"></i>Réseaux
+                                sociaux</label>
+                            <nav class="btn-group networks" role="group">
+                                <a data-popup-dimensions="560,430"
+                                    href="https://www.facebook.com/sharer/sharer.php?u=https://{{host}}/p{{subject.number}}/"
+                                    class="btn btn-default share-link" data-network="Facebook"
+                                    title="Partager cette section sur Facebook"><span
+                                        class="visible-lg-inline visible-sm-inline">Facebook </span><i
+                                        class="fa fa-fw fa-facebook"></i></a>
+                                        <a data-popup-dimensions="430,284"
+                                    href="https://twitter.com/intent/tweet?text=Voici une des parties de l'%23AvenirEnCommun pour laquelle je vais voter %23Melenchon2022 🗳️ https://{{host}}/p{{subject.number}}/ https://{{host}}/p{{subject.number}}/"
+                                    class="btn btn-default share-link" data-network="Twitter"
+                                    title="Partager cette section sur twitter"><span
+                                        class="visible-lg-inline visible-sm-inline">Twitter </span><i
+                                        class="fa fa-fw fa-twitter"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

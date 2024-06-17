@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<body id="body" class="page-search page-search-results">
+   {% include "_jump_link.html" %}
+   {% include "_navbar.html" %}
+
+
+   {% block head_navigation %}
+   <link rel="start" href="/">
+   {% endblock head_navigation %}
+
+   {% block jumbotron %}
+
+   <div class="jumbotron">
+      <form class="container form-total-loading " method='GET' action="/recherche">
+         <div class="input-group" id="main">
+            <span class="input-group-btn">
+               <button class="search-addon" type="submit" title="Effectuer une recherche sur « L'avenir en commun »">
+                  <i class="fa fa-fw fa-search" aria-hidden="true"></i>
+                  <span class="sr-only">Rechercher</span>
+               </button>
+            </span>
+            <input type="text" name="q" autocomplete="off" class="search-terms form-control" placeholder="Votre recherche ici"
+               value="{{ request|title|truncatechars:20 }}">
+         </div>
+         <p class="sidelines" aria-hidden="true">
+            <i class="fa fa-search"></i>
+         </p>
+         <span class="search-results-count"
+            data-prototype="<strong>__total__</strong> occurence__plural__ pour « <strong>__query__</strong> » dans « {{ site_long_name }} »">
+            {% if not query %}<i class="fa fa-fw fa-lightbulb-o" aria-hidden="true"></i> Pourquoi ne pas
+            essayer
+            ci-dessus des termes tels que <a href="/recherche?q=partage" tabindex="-1"><strong class="suggestion">partage</strong></a>, <a href="/recherche?q=écologie" tabindex="-1"><strong class="suggestion">écologie</strong></a>, <a href="/recherche?q=santé" tabindex="-1"><strong class="suggestion">santé</strong></a>,
+              <a href="/recherche?q=industrie" tabindex="-1"><strong class="suggestion">industrie</strong></a>, <a href="/recherche?q=économie" tabindex="-1"><strong class="suggestion">économie</strong></a>, <a href="/recherche?q=planification" tabindex="-1"><strong class="suggestion">planification</strong></a>, <a href="/recherche?q=transition" tabindex="-1"><strong class="suggestion">transition</strong></a>, <a href="/recherche?q=indépendance" tabindex="-1"><strong class="suggestion">indépendance</strong></a>,
+              <a href="/recherche?q=Europe" tabindex="-1"><strong class="suggestion">Europe</strong></a>, <a href="/recherche?q=finance" tabindex="-1"><strong class="suggestion">finance</strong></a>, <a href="/recherche?q=protectionnisme" tabindex="-1"><strong class="suggestion">protectionnisme</strong></a>, <a href="/recherche?q=laïcité" tabindex="-1"><strong class="suggestion">laïcité</strong></a>, <a href="/recherche?q=coopération" tabindex="-1"><strong class="suggestion">coopération</strong></a>, etc.
+            {% else %}
+            « <strong>{{ request|title }}</strong> »
+            {% if laec_count > 0 %}
+            est mentionné dans <strong>{{ laec_count }}</strong> section{% if laec_count > 1 %}s{% endif %}
+          {% else %}
+            n'est mentionné dans aucune section
+          {% endif %}
+          de « L'Avenir En Commun »
+          {% if external_count > 0 %} et dans <strong>{{ external_count }}</strong> {% if external_count > 1 %}plans/livrets thématiques{% else %}plan/livret thématiques{% endif %}
+          {% endif %}
+
+            {% endif %}</span>
+      </form>
+   </div>
+   {% endblock jumbotron %}
+
+   {% block main_content %}
+   <div class="wrap-container-main">
+      <div class="container container-main">
+
+         <div class="row">
+            {% include '_searchsidebar.html' %}
+            <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
+               <h1 class="h3">
+
+                  <i class="fa fa-fw fa-hand-o-right" aria-hidden="true"></i> Liste des résultats
+               </h1>
+               <hr>
+
+               {% if not query%}
+                  <p class="lead no-search">
+                     Pour commencer à rechercher dans le programme, merci de saisir les termes de votre recherche ci-dessus
+                  </p>
+               {% endif %}
+               <p class="lead no-results {% if  query or query|length != 0 %} hidden{% endif %}">
+                  Votre requête n'a produit aucun résultat. Merci d'en vérifier l'orthographe ou d'essayer de la
+                  formuler
+                  différemment.
+               </p>
+
+               <ul id="resultats" class="list-group search-results">
+
+                  {% for result in query %}
+                  {% if result.first %}
+                  <p class="sidelines" aria-hidden="true" style="margin-top:1em">
+                     Pour en savoir plus
+                  </p>
+                  {% endif %}
+                  <li class="list-group-item">
+                  {% include './result.html' %}
+                  </li>
+                  {% endfor %}
+
+               </ul>
+
+               <p class="sidelines" aria-hidden="true">
+                  <i class="fa fa-fw fa-search"></i>
+               </p>
+            </article>
+         </div>
+      </div>
+   </div>
+   {% endblock main_content %}
+
+
+   {% include '_footer.html' %}
+
+   <div class="total-loading-backdrop">
+      <div class="loading-animation">
+         <div class="loading-bar"></div>
+         <div class="loading-bar"></div>
+         <div class="loading-bar"></div>
+         <div class="loading-bar"></div>
+      </div>
+   </div>
+</body>
+
+</html>
+{% endblock body %}
