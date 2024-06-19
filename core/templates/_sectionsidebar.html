@@ -46,8 +46,8 @@
     {% endif %}
 
     {% if subject.entity == 'section' %}
-    <li><label>Préface de la partie</label><a href="/partie/{{subject.chapter.part.number}}/{{subject.chapter.part.slug}}" rel="contents" title="Préface du chapitre" data-load-display="" class="no-outline">
-      <i class="fa fa-fw fa-arrow-up" aria-hidden="true"></i><span class="alternate">{{subject.chapter.main_title}} </span>{{subject.chapter.sub_title}}</a></li>
+    <li><label>Préface de la partie</label><a href="/partie/{{subject.part.number}}/{{subject.part.slug}}" rel="contents" title="Préface de la partie" data-load-display="" class="no-outline">
+      <i class="fa fa-fw fa-arrow-up" aria-hidden="true"></i>{{subject.part.title}}</a></li>
 
     {% else %}
     <li class="theme-part-0"><label>Retour au sommaire</label><a href="/sommaire" rel="contents" title="Retour au sommaire" data-load-display="" class="no-outline">

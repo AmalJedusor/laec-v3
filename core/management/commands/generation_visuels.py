@@ -124,8 +124,6 @@ class Command(BaseCommand):
         soptions.add_argument('--ignore-certificate-errors')
 
 
-        driver = webdriver.Remote(
-                            command_executor='http://selenium-hub:4444/wd/hub',   desired_capabilities={'browserName': 'chrome', 'javascriptEnabled': True}, options=soptions)
 
 
 
@@ -134,10 +132,7 @@ class Command(BaseCommand):
         import random
         import socket
         from PIL import Image
-
-        ip = socket.gethostbyname(socket.gethostname())
-
-
+        print("OK")
         for npartie,partie,nchapitre,chapitre,nsection,section,adjust,new,hash in sections:
             if not 'update' in options['ids'] and not 'all' in options['ids'] and not 'sections' in options['ids'] and options['ids'] and not "s{n}".format(n=nsection) in options['ids']:
                 continue
@@ -145,12 +140,9 @@ class Command(BaseCommand):
             basepath = os.path.join('core','static','visuels')
             imgpath = os.path.join(basepath,name+'.png')
             jpgpath = os.path.join(basepath,name+'.jpg')
+            print(jpgpath)
+            print(name)
 
-            if not ('update' in options['ids'] and new==False and os.path.exists(imgpath)):
-                print(imgpath)
-                driver.get('http://'+ip+':8000/visuel/'+name)
-                time.sleep(1)
-                driver.find_element(By.ID, 'mesure').screenshot(imgpath)
             if not os.path.exists(jpgpath):
                 im1 = Image.open(imgpath)
                 im1.convert('RGB').save(jpgpath)
@@ -165,12 +157,6 @@ class Command(BaseCommand):
             basepath = os.path.join('core','static','visuels')
             imgpath = os.path.join(basepath,name+'.png')
             jpgpath = os.path.join(basepath,name+'.jpg')
-
-            if not('update' in options['ids'] and new==False and os.path.exists(imgpath)):
-                print(imgpath)
-                driver.get('http://'+ip+':8000/visuel/'+name)
-                time.sleep(1)
-                driver.find_element(By.ID, 'mesure').screenshot(imgpath)
             if not os.path.exists(jpgpath):
                 im1 = Image.open(imgpath)
                 im1.convert('RGB').save(jpgpath)
@@ -183,20 +169,3 @@ class Command(BaseCommand):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        driver.quit()

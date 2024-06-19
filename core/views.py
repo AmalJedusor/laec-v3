@@ -246,9 +246,7 @@ def recherche(request):
                      },
                  "content": {
                 "fragment_size": 300,
-
-
-            }
+                 }
                 }
     }
     }
