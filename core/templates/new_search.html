@@ -1,0 +1,109 @@
+<div class="colorful-separator"></div>
+
+<section class="search">
+  <div class="search__container">
+    <h2 class="search__title">JE VEUX CONNAÎTRE LE PROGRAMME DU FRONT POPULAIRE SUR...</h2>
+  
+    <div class="search__shortcuts">
+      <button>Pouvoir d'achat</button>
+      <button>Planification écologique</button>
+      <button>Retraite</button>
+      <button>L'urgence de la paix</button>
+    </div>
+  
+    <div class="search__input">
+      <input type="search" name="" id="" placeholder="Cherchez par mots clés: économie, justice, écologie...">
+      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+    .colorful-separator {
+      height: 2rem;
+      background: linear-gradient(110deg, var(--c-green) 0% 10%,
+                                          var(--c-red) 10% 20%,
+                                          var(--c-yellow) 20% 30%,
+                                          var(--c-purple) 30% 40%,
+                                          var(--c-pink) 40% 50%,
+                                          var(--c-green) 50% 60%,
+                                          var(--c-red) 60% 70%,
+                                          var(--c-yellow) 70% 80%,
+                                          var(--c-purple) 80% 90%,
+                                          var(--c-pink) 90% 100%);
+    }
+  
+    .search {
+      background-color: var(--c-green);
+      padding-block: 5rem;
+    }
+  
+    .search__container {
+      max-width: var(--bp-tablet);
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+  
+    .search__title {
+      font-size: var(--fs-title--large);
+      text-align: center;
+      line-height: 1.1;
+      color: var(--c-background);
+    }
+  
+    .search__shortcuts {
+      display: flex;
+      justify-content: space-between;
+  
+      & button {
+        background-color: var(--c-text);
+        color: var(--c-background);
+        padding: 0.5rem 1.5rem;
+        border: transparent;
+        width: fit-content;
+        font-size: var(--fs-text--small);
+        transition: background-color 0.3s, color 0.3s;
+  
+        &:hover,
+        &:focus-visible {
+          background-color: var(--c-background);
+          color: var(--c-text);
+        }
+      }
+    }
+  
+    .search__input {
+      display: flex;
+      gap: 1rem;
+      background-color: var(--c-background);
+      border-radius: 1rem;
+      overflow: hidden;
+      padding: 1rem 2rem;
+      border: 2px solid var(--c-text);
+  
+      & input {
+        background-color: transparent;
+        color: var(--c-text);
+        width: 100%;
+        border: none;
+        outline: none;
+      }
+  
+      & button {
+        width: 2rem;
+        height: 2rem;
+        border: transparent;
+        background-color: transparent;
+        font-size: var(--fs-text--large);
+        opacity: 0.5;
+        transition: opacity 0.3s;
+  
+        &:hover,
+        &:focus-visible {
+          opacity: 1;
+        }
+      }
+    }
+  </style>

@@ -1,0 +1,21 @@
+
+
+
+<!--class continer-->
+<div class="row copy-img">
+  {% for m in mesures %}
+  <div class="grid__item col-xs-12 col-sm-6 col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <img class="img-responsive" src="/static/visuels/{{m.shortlink}}.jpg" />
+      </div>
+      <div class="panel-footer">
+        <div class="panel-footer-labels">
+          <span class="label label-primary">Primary</span>
+          <span class="label label-primary btn-copy" data-link="/static/visuels/{{m.shortlink}}.jpg">Lien <i class="fa fa-copy" style="pointer-events: none;"></i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

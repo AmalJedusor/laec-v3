@@ -11,3 +11,5 @@ requests
 thefuzz
 unidecode
 markdownify
+django-compressor==2.4
+django-libsass==0.8

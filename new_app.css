@@ -1,0 +1,551 @@
+.discord {
+  max-width: var(--bp-desktop);
+  margin: auto;
+  margin-block: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+.discord__title {
+  font-size: var(--fs-title--large);
+}
+
+.discord__button-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-inline: auto;
+  background-color: var(--c-text);
+  padding: 0.5rem 1.5rem;
+  color: var(--c-background);
+  font-weight: var(--fw--bold);
+  text-decoration: none;
+  border: transparent;
+  transition: box-shadow 0.3s;
+}
+.discord__button-link:hover, .discord__button-link:focus-visible {
+  box-shadow: var(--c-text) 0 4px 8px;
+}
+
+.footer {
+  background-color: var(--c-text);
+  /* margin-top + global to put footer where it belongs */
+  margin-top: auto;
+}
+
+:global(body) {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.footer__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--bp-desktop--large);
+  margin: auto;
+  display: grid;
+  grid-template: auto/repeat(3, 1fr);
+}
+.footer__nav > * {
+  margin-inline: auto;
+}
+.footer__nav > *:first-child {
+  margin-left: 0;
+}
+.footer__nav > *:last-child {
+  margin-right: 0;
+}
+
+.footer__nav-home {
+  height: var(--fs-title--large);
+  padding-block: 1.5rem;
+}
+
+.footer__links {
+  display: flex;
+  gap: 1.5rem;
+}
+.footer__links li {
+  background-color: var(--c-background);
+  border-radius: 50%;
+  width: 2rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+.footer__links li a {
+  color: var(--c-text);
+  transition: color 0.3s;
+}
+.footer__links li:hover, .footer__links li:focus-within {
+  background-color: var(--c-text);
+}
+.footer__links li:hover a, .footer__links li:focus-within a {
+  color: var(--c-background);
+}
+
+.footer__legal {
+  color: var(--c-background);
+  text-decoration: underline solid transparent 2px;
+  transition: text-decoration-color 0.3s;
+}
+.footer__legal:hover, .footer__legal:focus-visible {
+  text-decoration-color: var(--c-background);
+}
+
+.header {
+  background-color: var(--c-red);
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--bp-desktop--large);
+  margin: auto;
+}
+
+.header__nav-home {
+  height: var(--fs-title--large);
+  padding-block: 1.5rem;
+}
+
+.header__nav--group {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.header__nav--search {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--c-background);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid var(--c-text);
+}
+.header__nav--search input {
+  background-color: transparent;
+  color: var(--c-text);
+  width: 13.5rem;
+  border: transparent;
+  outline: transparent;
+  font-size: var(--fs-text--small);
+}
+.header__nav--search button {
+  border: transparent;
+  background-color: transparent;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.header__nav--search button:hover, .header__nav--search button:focus-visible {
+  opacity: 1;
+}
+
+.header__links {
+  display: flex;
+  gap: 1.5rem;
+}
+.header__links li {
+  background-color: var(--c-background);
+  border-radius: 50%;
+  width: 2rem;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+.header__links li a {
+  color: var(--c-text);
+  transition: color 0.3s;
+}
+.header__links li:hover, .header__links li:focus-within {
+  background-color: var(--c-text);
+}
+.header__links li:hover a, .header__links li:focus-within a {
+  color: var(--c-background);
+}
+
+.hero {
+  max-width: var(--bp-desktop);
+  margin: auto;
+  margin-block: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+.hero__logo {
+  height: 12rem;
+  margin-inline: auto;
+}
+
+.hero__title {
+  font-size: var(--fs-title--larger);
+}
+
+.hero__button-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-inline: auto;
+  background-color: var(--c-red);
+  padding: 0.5rem 1.5rem;
+  color: var(--c-background);
+  font-weight: var(--fw--bold);
+  text-decoration: none;
+  border: transparent;
+  transition: gap 0.3s;
+}
+.hero__button-link:hover, .hero__button-link:focus-visible {
+  gap: 1.5rem;
+}
+.hero__button-link .arrow {
+  display: inline-block;
+  width: 1.5rem;
+  height: 2px;
+  background-color: var(--c-background);
+  position: relative;
+}
+.hero__button-link .arrow::before, .hero__button-link .arrow::after {
+  content: "";
+  position: absolute;
+  width: 0.75rem;
+  height: 2px;
+  background-color: var(--c-background);
+  right: -3.5px;
+}
+.hero__button-link .arrow::before {
+  rotate: 45deg;
+  top: -3.5px;
+}
+.hero__button-link .arrow::after {
+  rotate: -45deg;
+  bottom: -3.5px;
+}
+
+.roadmap {
+  max-width: var(--bp-desktop--large);
+  margin: auto;
+  margin-block: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.roadmap__nav {
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  background-color: var(--c-background);
+}
+
+.roadmap__tabs-container {
+  display: grid;
+  grid-template: auto/repeat(3, 1fr);
+  border: 2px solid var(--c-text);
+}
+
+.roadmap__tab {
+  padding: 1.5rem;
+  position: relative;
+  transition: background-color 0.3s;
+}
+.roadmap__tab a {
+  text-decoration: none;
+  color: var(--c-text);
+  opacity: 0.5;
+  transition: color 0.3s, opacity 0.3s;
+}
+.roadmap__tab p {
+  text-align: center;
+  font-weight: var(--fw--bolder);
+}
+.roadmap__tab span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.roadmap__tab.tab1:hover span, .roadmap__tab.tab1:focus-visible span, .roadmap__tab.tab2:hover span, .roadmap__tab.tab2:focus-visible span, .roadmap__tab.tab3:hover span, .roadmap__tab.tab3:focus-visible span {
+  opacity: 0.2;
+}
+.roadmap__tab.tab1.active a, .roadmap__tab.tab2.active a, .roadmap__tab.tab3.active a {
+  color: var(--c-background);
+  opacity: 1;
+}
+.roadmap__tab.tab1:hover span, .roadmap__tab.tab1:focus-visible span {
+  background-color: var(--c-red);
+}
+.roadmap__tab.tab1.active {
+  background-color: var(--c-red);
+}
+.roadmap__tab.tab2:hover span, .roadmap__tab.tab2:focus-visible span {
+  background-color: var(--c-green);
+}
+.roadmap__tab.tab2.active {
+  background-color: var(--c-green);
+}
+.roadmap__tab.tab3:hover span, .roadmap__tab.tab3:focus-visible span {
+  background-color: var(--c-purple);
+}
+.roadmap__tab.tab3.active {
+  background-color: var(--c-purple);
+}
+
+.roadmap__tab-title {
+  font-family: "Barlow Condensed", "sans-serif";
+  font-size: var(--fs-title);
+}
+
+.roadmap__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.roadmap__title {
+  font-size: var(--fs-title--large);
+  transition: color 0.3s;
+}
+.roadmap__title.tab1 {
+  color: var(--c-red);
+}
+.roadmap__title.tab2 {
+  color: var(--c-green);
+}
+.roadmap__title.tab3 {
+  color: var(--c-purple);
+}
+
+.roadmap__introduction {
+  text-align: justify;
+}
+
+.roadmap__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  counter-set: steps 0;
+}
+.roadmap__steps a {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+}
+.roadmap__steps a:hover h3, .roadmap__steps a:focus-visible h3 {
+  padding-inline: 7.5rem 1rem;
+}
+.roadmap__steps h3 {
+  position: relative;
+  font-weight: var(--fw--bold);
+  padding-block: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
+  padding-inline: 6.5rem 2rem;
+  transition: padding 0.3s;
+  counter-increment: steps;
+}
+.roadmap__steps h3::before {
+  content: counter(steps, decimal-leading-zero) ".";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--c-background);
+}
+.roadmap__steps .arrow {
+  flex-shrink: 0;
+  display: inline-block;
+  width: 1.5rem;
+  height: 2px;
+  position: relative;
+}
+.roadmap__steps .arrow::before, .roadmap__steps .arrow::after {
+  content: "";
+  position: absolute;
+  width: 0.75rem;
+  height: 2px;
+  right: -3.5px;
+}
+.roadmap__steps .arrow::before {
+  rotate: 45deg;
+  top: -3.5px;
+}
+.roadmap__steps .arrow::after {
+  rotate: -45deg;
+  bottom: -3.5px;
+}
+.roadmap__steps .roadmap__steps-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0.2;
+  z-index: -1;
+}
+.roadmap__steps li:nth-child(6n+1) h3 {
+  color: var(--c-red);
+  box-shadow: inset var(--c-red) 0 -2px;
+}
+.roadmap__steps li:nth-child(6n+1) h3::before, .roadmap__steps li:nth-child(6n+1) .arrow, .roadmap__steps li:nth-child(6n+1) .arrow::before, .roadmap__steps li:nth-child(6n+1) .arrow::after, .roadmap__steps li:nth-child(6n+1) .roadmap__steps-background {
+  background-color: var(--c-red);
+}
+.roadmap__steps li:nth-child(6n+2) h3 {
+  color: var(--c-green);
+  box-shadow: inset var(--c-green) 0 -2px;
+}
+.roadmap__steps li:nth-child(6n+2) h3::before, .roadmap__steps li:nth-child(6n+2) .arrow, .roadmap__steps li:nth-child(6n+2) .arrow::before, .roadmap__steps li:nth-child(6n+2) .arrow::after, .roadmap__steps li:nth-child(6n+2) .roadmap__steps-background {
+  background-color: var(--c-green);
+}
+.roadmap__steps li:nth-child(6n+3) h3 {
+  color: var(--c-blue);
+  box-shadow: inset var(--c-blue) 0 -2px;
+}
+.roadmap__steps li:nth-child(6n+3) h3::before, .roadmap__steps li:nth-child(6n+3) .arrow, .roadmap__steps li:nth-child(6n+3) .arrow::before, .roadmap__steps li:nth-child(6n+3) .arrow::after, .roadmap__steps li:nth-child(6n+3) .roadmap__steps-background {
+  background-color: var(--c-blue);
+}
+.roadmap__steps li:nth-child(6n+4) h3 {
+  color: var(--c-purple);
+  box-shadow: inset var(--c-purple) 0 -2px;
+}
+.roadmap__steps li:nth-child(6n+4) h3::before, .roadmap__steps li:nth-child(6n+4) .arrow, .roadmap__steps li:nth-child(6n+4) .arrow::before, .roadmap__steps li:nth-child(6n+4) .arrow::after, .roadmap__steps li:nth-child(6n+4) .roadmap__steps-background {
+  background-color: var(--c-purple);
+}
+.roadmap__steps li:nth-child(6n+5) h3 {
+  color: var(--c-pink);
+  box-shadow: inset var(--c-pink) 0 -2px;
+}
+.roadmap__steps li:nth-child(6n+5) h3::before, .roadmap__steps li:nth-child(6n+5) .arrow, .roadmap__steps li:nth-child(6n+5) .arrow::before, .roadmap__steps li:nth-child(6n+5) .arrow::after, .roadmap__steps li:nth-child(6n+5) .roadmap__steps-background {
+  background-color: var(--c-pink);
+}
+.roadmap__steps li:nth-child(6n+6) h3 {
+  color: var(--c-text);
+  box-shadow: inset var(--c-text) 0 -2px;
+}
+.roadmap__steps li:nth-child(6n+6) h3::before, .roadmap__steps li:nth-child(6n+6) .arrow, .roadmap__steps li:nth-child(6n+6) .arrow::before, .roadmap__steps li:nth-child(6n+6) .arrow::after, .roadmap__steps li:nth-child(6n+6) .roadmap__steps-background {
+  background-color: var(--c-text);
+}
+
+.colorful-separator {
+  height: 2rem;
+  background: linear-gradient(110deg, var(--c-green) 0% 10%, var(--c-red) 10% 20%, var(--c-yellow) 20% 30%, var(--c-purple) 30% 40%, var(--c-pink) 40% 50%, var(--c-green) 50% 60%, var(--c-red) 60% 70%, var(--c-yellow) 70% 80%, var(--c-purple) 80% 90%, var(--c-pink) 90% 100%);
+}
+
+.search {
+  background-color: var(--c-green);
+  padding-block: 5rem;
+}
+
+.search__container {
+  max-width: var(--bp-tablet);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.search__title {
+  font-size: var(--fs-title--large);
+  text-align: center;
+  line-height: 1.1;
+  color: var(--c-background);
+}
+
+.search__shortcuts {
+  display: flex;
+  justify-content: space-between;
+}
+.search__shortcuts button {
+  background-color: var(--c-text);
+  color: var(--c-background);
+  padding: 0.5rem 1.5rem;
+  border: transparent;
+  width: fit-content;
+  font-size: var(--fs-text--small);
+  transition: background-color 0.3s, color 0.3s;
+}
+.search__shortcuts button:hover, .search__shortcuts button:focus-visible {
+  background-color: var(--c-background);
+  color: var(--c-text);
+}
+
+.search__input {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--c-background);
+  border-radius: 1rem;
+  overflow: hidden;
+  padding: 1rem 2rem;
+  border: 2px solid var(--c-text);
+}
+.search__input input {
+  background-color: transparent;
+  color: var(--c-text);
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.search__input button {
+  width: 2rem;
+  height: 2rem;
+  border: transparent;
+  background-color: transparent;
+  font-size: var(--fs-text--large);
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.search__input button:hover, .search__input button:focus-visible {
+  opacity: 1;
+}
+
+.introduction {
+  max-width: var(--bp-desktop--large);
+  margin: auto;
+  margin-block: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.introduction__title {
+  font-size: var(--fs-title--large);
+}
+
+.introduction__text {
+  column-count: 2;
+  column-gap: 2.5rem;
+  text-align: justify;
+}
+
+/* TEMP */
+img {
+  height: 100%;
+  width: 100%;
+  height: 34rem;
+  background: orange;
+}
+
+/*# sourceMappingURL=new_app.css.map */

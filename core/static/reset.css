@@ -1,0 +1,65 @@
+/* CSS RESET */
+
+* {
+  /* remove default spacing */
+  margin: 0;
+  padding: 0;
+  
+  /* force styling of font through styling */
+  font: inherit;
+}
+
+/* make sizing simpler */
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+  /* dark mode user-agent-styles */
+  color-scheme: light;
+  /* prevents the content from shifting */
+  /*! scrollbar-gutter: stable; */
+}
+
+/* min body height */
+body {
+  min-height: 100vh;
+}
+
+/* responsive images/videos */
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* remove list style from menu elements */
+menu {
+  list-style: none;
+}
+
+/* remove underline from links in menus */
+menu > a {
+  text-decoration: none;
+}
+
+/* fix fieldset width bug */
+fieldset {
+  min-width: auto;
+}
+
+/* skip to the end of animations and kill them */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+  }
+}

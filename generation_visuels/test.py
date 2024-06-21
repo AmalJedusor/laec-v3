@@ -66,7 +66,6 @@ import re
 
 #"""Lorem ipsum dolor sit amet</span> consectetur adipisicing elit. Molestias quo iste
 #<span class="highlight">sapiente doloremque debitis</span>, maiores quia. Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque laudantium. Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque laudantium"""
-
 from jinja2 import Environment, FileSystemLoader
 env = Environment(loader = FileSystemLoader("."))
 mesure_template = env.get_template("mesure.html")
@@ -75,10 +74,9 @@ options = webdriver.ChromeOptions()
 #options.add_argument("--user-data-dir=userdata")
 options.add_argument('--allow-running-insecure-content')
 options.add_argument('--ignore-certificate-errors')
-options.add_argument('--headless')
-
-driver = webdriver.Chrome(options=options,
-                              executable_path="/usr/bin/chromedriver")
+options.add_argument('--ignore-ssl-errors')
+options.add_argument('--ignore-certificate-errors-spki-list')
+driver = webdriver.Chrome(options=options, executable_path="C://Program Files//Google//Chrome//Application//chromedriver.exe")
 driver.set_window_size(1400, 1000)
 
 import time
@@ -91,9 +89,11 @@ for v in ('','_alt'):
         background = 'mP{n}{v}.png'.format(n=npartie,v=v)
         html_content = section_template.render(adjust=adjust,background=background,nchapitre=nchapitre, chapitre=chapitre, nsection=nsection, section=section,couleurs=couleurs[npartie-1],shortlink=name)
 
-        with open('visuels/html/'+name+v+'.html','w') as f:
-            f.write(html_content)
-        driver.get('file:///home/olivier/devs/laecV2/gen/visuels/html/'+name+v+'.html')
+        f = open('visuels/html/'+name+v+'.html', "x")
+        f.write(html_content)
+        time.sleep(2)
+
+        driver.get('/visuels/html/'+name+v+'.html')
         time.sleep(1)
         driver.find_element(By.ID, 'mesure').screenshot('visuels/png/Sections/'+name+v+'.png')
 
@@ -105,8 +105,9 @@ for v in ('','_alt'):
         background = ("mc" if cle else "m") + 'P{n}{v}.png'.format(n=npartie,v=v)
         html_content = mesure_template.render(adjust=adjust,background=background,cle=cle,titre=section, titre_numero=nsection,couleurs=couleurs[npartie-1],mesure=mesure,shortlink=name)
 
-        with open('visuels/html/'+name+v+'.html','w') as f:
-            f.write(html_content)
+        f = open('visuels/html/'+name+v+'.html', "x")
+        f.write(html_content)
+        f.close()
         driver.get('file:///home/olivier/devs/laecV2/gen/visuels/html/'+name+v+'.html')
         time.sleep(1)
         driver.find_element(By.ID, 'mesure').screenshot('visuels/png/Mesures/'+name+v+'.png')

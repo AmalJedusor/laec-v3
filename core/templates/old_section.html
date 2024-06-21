@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block html_class %}page-sectiontheme-part theme-part-{{subject.part_number}} {% endblock %}
+{% block body %}
+
+
+
+<body id="body">
+   {% include "_jump_link.html" %}
+   {% include "_navbar.html" %}
+
+   <div class="theme-part-{{subject.part_number}} jumbotron" aria-hidden="true">
+      <div class="container">
+         <h1>
+            <span class="number">{{subject.number}}</span>
+            <span class="alternate">{{ subject.main_title }}</span>
+            <b class="text-balance" tabindex="0">{{subject.title_high | safe}}</b>
+         </h1>
+         <p class="sidelines">
+            <i class="fa icon-part-{{subject.part_number}}"></i>
+         </p>
+         <a rel="contents" data-load-display href="/section/{{subject.number}}/{{subject.slug}}">
+            <i class="fa fa-fw fa-arrow-left"></i>
+            <span class="hidden-xs"> Index du chapitre</span>
+         </a>
+      </div>
+   </div>
+   <div class="wrap-container-main" id="main">
+      <div class="container container-main">
+         <noscript class="visible-no-js small text-muted">
+            <i class="fa fa-fw fa-info-circle" aria-hidden="true"></i> Je n'ai pas activé le javascript,
+            <a href="/page/le-javascript-c-est-non"
+               title="Informations sur les fonctionnalités de LAEC.fr nécessitant l'utilisation de javascript">qu'est-ce
+               que je manque</a> ?
+         </noscript>
+         <div class="row">
+            {% include '_sectionsidebar.html' %}
+            <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
+               <section class="actions actions-s">
+                  {% include '_partager_section.html' %}
+               </section>
+
+               <hr>
+               <section class="content-text parsedown">
+                  <div class="subject-body">
+                    <div class="semi-lead subject-foreword">
+                       <p tabindex="0">
+                          {{ subject.forewords | safe | linebreaksbr }}
+                       </p>
+                    </div>
+                     <article class="addenda-main" id="addenda-main">
+                        <header class="page-header addenda-header">
+                           {% if subject.key %}
+                           <h2 class="h4" id="addenda"> <i class="fa fa-fw fa-pen"></i> Mesure clé :</h2>
+
+                           <nav class="list-measures list-group">
+
+
+                              <li id="mesure-{{subject.key.number}}" class="list-group-item" data-measure-seq ="{{subject.key.number}}" data-target="#modal-measure-{{subject.key.number}}">
+                                 <h5 tabindex="0" class="no-outline">{{ subject.key.text_high | safe }}</h5>
+                              </li>
+                               <div class="modal fade modal-measure" measure-index="{{subject.key.number}}" id="modal-measure-{{subject.key.number}}" tabindex="-1" role="dialog" aria-labelledby="#modal-measure-label-{{subject.key.number}}"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Fermer"><i class="fa fa-fw fa-times" aria-hidden="true"></i></button><h4 class="modal-title" id="modal-measure-label-{{subject.key.number}}"><i class="hidden-xs hidden-sm fa fa-fw fa-2x fa-pull-left icon-part-{{subject.part_number}}" aria-hidden="true"></i><span class="alternate">{{subject.main_title}}</span>{{ subject.title }}</h4></div><div class="modal-body lead"><p>{{subject.key.text}}</p></div><div class="modal-footer actions"><button type="button" class="btn btn-default pull-right" data-dismiss="modal">Fermer <i class="fa fa-fw fa-times" aria-hidden="true"></i></button><button title="Lien direct vers la mesure et boutons de partage sur les réseaux sociaux" class="btn btn-defaultshare-collapser" data-target="#panel-m-share-{{subject.key.number}}" aria-controls="panel-m-share-{{subject.key.number}}" aria-expanded="false" data-toggle="collapse"><i class="fa fa-fw fa-share-alt"></i>&nbsp;<span class="visible-lg-inline">Partager</span></button><button title="À propos du livre papier…" class="btn btn-defaultpageref-collapser" data-target="#panel-m-pageref-{{subject.key.number}}" aria-controls="panel-m-pageref-{{subject.key.number}}" aria-expanded="false" data-toggle="collapse"><i class="fa fa-fw fa-bookmark"></i>&nbsp;<span class="visible-lg-inline">Page <strong>{{subject.key.page}}</strong></span></button><div class="collapse collapsableshare-collapsable" id="panel-m-share-{{subject.key.number}}"><div class="panel-wrap"><div class="panel panel-default"><div class="panel-heading">Faites tourner cette mesure&nbsp;!</div><div class="panel-body"><div class="row"><div class="col-md-5"><label for="share-control-m-{{subject.key}}"><i class="fa fa-fw fa-link" aria-hidden="true"></i>Lien court direct</label><div class="form"><div class="form-group"><div class="input-group"><div class="input-group-addon"><i class="fa fa-fw fa-anchor" aria-hidden="true"></i></div><input type="text" id="share-control-m-{{measure.number}}" class="form-control share-control" readonly="readonly" value="https://{{host}}/s{{subject.number}}m{{subject.key.number}}" autofocus=""></div></div></div></div><div class="col-md-7"><label><i class="fa fa-fw fa-share" aria-hidden="true"></i>Réseaux sociaux</label><nav class="btn-group networks" role="group">
+                                  <a data-popup-dimensions="560,430" href="https://www.facebook.com/sharer/sharer.php?u=https://{{host}}/s{{subject.number}}m{{subject.key.number}}" class="btn btn-default share-link" data-network="Facebook" title="Partager cette mesure sur Facebook"><span class="visible-lg-inline visible-sm-inline">Facebook </span><i class="fa fa-fw fa-facebook"></i></a>
+                                 <a data-popup-dimensions="430,284" href="https://twitter.com/intent/tweet?text=Voici une des sections de l'%23AvenirEnCommun pour laquelle je vais voter %23Melenchon2022 🗳️ https://{{host}}/s{{subject.number}}m{{subject.key.number}}/ https://{{host}}/s{{subject.number}}m{{subject.key.number}}/" class="btn btn-default share-link" data-network="Twitter" title="Partager cette mesure sur twitter"><span class="visible-lg-inline visible-sm-inline">Twitter </span><i class="fa fa-fw fa-twitter"></i></a></nav></div></div></div></div></div></div><div class="collapse collapsablepageref-collapsable" id="panel-m-pageref-{{subject.key.number}}"><div class="panel-wrap"><div class="panel panel-default"><div class="panel-heading">L'Avenir en commun</div><div class="panel-body"><div class="row"><div class="col-sm-2 col-sm-push-10 hidden-xs"><img src="/static/img/livrefront_small.jpg" alt="Couverture du livre-programme aux publié aux éditions du Seuil" class="img-responsive img-thumbnail"></div><div class="col-sm-10 col-sm-pull-2"><p>Retrouvez ce passage à la <strong>page {{ subject.page }}</strong> du livre-programme pour l'Union Populaire', publié aux <a href="https://www.seuil.com/ouvrage/l-avenir-en-commun-jean-luc-melenchon/9782021482461" class="external" title="Le programme sur le site officiel des éditions du Seuil">éditions du Seuil</a> et trouvable dans toutes les <a class="external" title="«&nbsp;Les libraires&nbsp;», réseau de librairies indépendantes" href="https://www.leslibraires.fr/le_reseau/">librairies</a> au prix de <strong>3&nbsp;€</strong>.</p><p>Vous pouvez aussi l'obtenir dans des magasins en lignes tels que la <a href="https://livre.fnac.com/a16111725/Jean-Luc-Melenchon-L-Avenir-en-commun-Le-programme-pour-l-Union-populaire-presente-par-Jean-Luc-Melenchon"" class="external">Fnac</a>, ou encore le commander via internet chez un <a class="external" title="Trouver «L'Avenir en commun&nbsp;» dans le réseau «&nbsp;les libraires&nbsp;»" href="https://www.leslibraires.fr/livre/9275770-l-avenir-en-commun-le-programme-de-la-france-i--jean-luc-melenchon-le-seuil">libraire indépendant</a> proche de chez vous.</p>  <p class="text-grey small">* dans l'édition de <strong>novembre 2021</strong>, ISBN&nbsp;:
+                                        <strong>978-2-02-148246-1</strong>
+                                    </p></div></div></div></div></div></div></div></div></div></div>
+
+
+
+                           </nav>
+                        </header>
+                        {% endif %}
+                        <section class="addendum-main" id="addendum-main-1">
+                           <section class="section-measures">
+
+
+                              <nav class="list-measures list-group">
+
+                                 {% for measure in subject.measures %}
+                                 {% if measure.pretext %}<p class="pretext">{{ measure.pretext }} :</p>{% endif %}
+                                 <li id="mesure-{{measure.number}}" class="list-group-item" data-measure-seq ="{{measure.number}}" data-target="#modal-measure-{{measure.number}}" tabindex="0">
+                                    {{measure.text_high | safe }}
+                                 </li>
+
+                                 {% endfor %}
+                              </nav>
+                           </section>
+
+
+                     </article>
+                     <div class="semi-lead subject-foreword">
+                        <p>
+                           {{ subject.afterwords | safe | linebreaksbr }}
+                        </p>
+                     </div>
+
+
+
+
+                  </div>
+               </section>
+
+               {% if subject.asavoir %}
+               <article class="addenda-main" id="addenda-main">
+                  <header class="page-header addenda-header">
+                     <h2 class="h4" id="addenda"> <i class="fa fa-fw fa-thumb-tack"></i> A savoir</h2>
+                  </header>
+                  <div class="addenda-list">
+                     <section class="addendum-main addendum" id="addendum-main-1">
+
+                        <div class="addendum-body">
+                           <p>
+                           <p tabindex="0"><strong> {{ subject.asavoir|linebreaksbr }} </strong></p>
+                        </div>
+                     </section>
+                  </div>
+               </article>
+
+               {% endif %}
+               <a href="#body" id="back-to-top" data-do-scroll-to="800" title="Retour en haut de la page"><i
+                     class="fa fa-arrow-up" aria-hidden="true"></i><span> Retour en haut de page</span></a>
+            </article>
+         </div>
+      </div>
+
+
+
+   </div>
+
+
+
+
+   {% include '_footer.html' %}
+   {% for measure in subject.measures %}
+   <div class="modal fade modal-measure" measure-index="{{measure.number}}" id="modal-measure-{{measure.number}}" tabindex="-1" role="dialog" aria-labelledby="#modal-measure-label-{{measure.number}}"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Fermer"><i class="fa fa-fw fa-times" aria-hidden="true"></i></button><h4 class="modal-title" id="modal-measure-label-{{measure.number}}"><i class="hidden-xs hidden-sm fa fa-fw fa-2x fa-pull-left icon-part-{{subject.part_number}}" aria-hidden="true"></i><span class="alternate">{{subject.main_title}}</span>{{ subject.title }}</h4></div><div class="modal-body lead"><p>{{measure.text}}</p></div><div class="modal-footer actions"><button type="button" class="btn btn-default pull-right" data-dismiss="modal">Fermer <i class="fa fa-fw fa-times" aria-hidden="true"></i></button><button title="Lien direct vers la mesure et boutons de partage sur les réseaux sociaux" class="btn btn-defaultshare-collapser" data-target="#panel-m-share-{{measure.number}}" aria-controls="panel-m-share-{{measure.number}}" aria-expanded="false" data-toggle="collapse"><i class="fa fa-fw fa-share-alt"></i>&nbsp;<span class="visible-lg-inline">Partager</span></button><button title="À propos du livre papier…" class="btn btn-defaultpageref-collapser" data-target="#panel-m-pageref-{{measure.number}}" aria-controls="panel-m-pageref-{{measure.number}}" aria-expanded="false" data-toggle="collapse"><i class="fa fa-fw fa-bookmark"></i>&nbsp;<span class="visible-lg-inline">Page <strong>{{measure.page}}</strong></span></button><div class="collapse collapsableshare-collapsable" id="panel-m-share-{{measure.number}}"><div class="panel-wrap"><div class="panel panel-default"><div class="panel-heading">Faites tourner cette mesure&nbsp;!</div><div class="panel-body"><div class="row"><div class="col-md-5"><label for="share-control-m-12"><i class="fa fa-fw fa-link" aria-hidden="true"></i>Lien court direct</label><div class="form"><div class="form-group"><div class="input-group"><div class="input-group-addon"><i class="fa fa-fw fa-anchor" aria-hidden="true"></i></div><input type="text" id="share-control-m-12" class="form-control share-control" readonly="readonly" value="https://{{host}}/s{{subject.number}}m{{measure.number}}" autofocus=""></div></div></div></div><div class="col-md-7"><label><i class="fa fa-fw fa-share" aria-hidden="true"></i>Réseaux sociaux</label><nav class="btn-group networks" role="group">
+      <a data-popup-dimensions="560,430" href="https://www.facebook.com/sharer/sharer.php?u=https://{{host}}/s{{subject.number}}m{{measure.number}}" class="btn btn-default share-link" data-network="Facebook" title="Partager cette mesure sur Facebook"><span class="visible-lg-inline visible-sm-inline">Facebook </span><i class="fa fa-fw fa-facebook"></i></a>
+      <a data-popup-dimensions="430,284" href="https://twitter.com/intent/tweet?text=Voici une des mesures de l'%23AvenirEnCommun pour laquelle je vais voter %23Melenchon2022 🗳️ https://{{host}}/s{{subject.number}}m{{measure.number}} https://{{host}}/s{{subject.number}}m{{measure.number}}" class="btn btn-default share-link" data-network="Twitter" title="Partager cette mesure sur twitter"><span class="visible-lg-inline visible-sm-inline">Twitter </span><i class="fa fa-fw fa-twitter"></i></a></nav></div></div></div></div></div></div><div class="collapse collapsablepageref-collapsable" id="panel-m-pageref-{{measure.number}}"><div class="panel-wrap"><div class="panel panel-default"><div class="panel-heading">L'Avenir en commun</div><div class="panel-body"><div class="row"><div class="col-sm-2 col-sm-push-10 hidden-xs"><img src="/static/img/livrefront_small.jpg" alt="Couverture du livre-programme aux publié aux éditions du Seuil" class="img-responsive img-thumbnail"></div><div class="col-sm-10 col-sm-pull-2"><p>Retrouvez ce passage à la <strong>page {{measure.page}}</strong> du livre-programme pour l'union Populaire, publié aux <a href="http://www.seuil.com/ouvrage/l-avenir-en-commun-jean-luc-melenchon/9782021317510" class="external" title="Le programme sur le site officiel des éditions du Seuil">éditions du Seuil</a> et trouvable dans toutes les <a class="external" title="«&nbsp;Les libraires&nbsp;», réseau de librairies indépendantes" href="https://www.leslibraires.fr/le_reseau/">librairies</a> au prix de <strong>3&nbsp;€</strong>.</p><p>Vous pouvez aussi l'obtenir dans des magasins en lignes tels qu'<a href="https://www.amazon.fr/programme-insoumise-candidat-Jean-Luc-M%C3%A9lenchon/dp/202131751X/" class="external">Amazon</a> ou la <a href="http://livre.fnac.com/a9371063/Jean-Luc-Melenchon-L-avenir-en-commun" class="external">Fnac</a>, ou encore le commander via internet chez un <a class="external" title="Trouver «L'Avenir en commun&nbsp;» dans le réseau «&nbsp;les libraires&nbsp;»" href="https://www.leslibraires.fr/livre/9275770-l-avenir-en-commun-le-programme-de-la-france-i--jean-luc-melenchon-le-seuil">libraire indépendant</a> proche de chez vous.</p></div></div></div></div></div></div></div></div></div></div>
+
+{% endfor %}
+
+</body>
+{% endblock %}

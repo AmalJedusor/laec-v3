@@ -1,0 +1,60 @@
+/* project-specific global variables and styles */
+
+/* variables */
+:root {
+	/* colors */
+	--c-green: #37ad6c;
+	--c-red: #e4022d;
+	--c-yellow: #ffed00;
+	--c-purple: #941a80;
+	--c-pink: #e50053;
+	--c-blue: #02b9f2;
+	--c-background: #ffffff;
+	--c-text: #181818;
+
+	/* breakpoints (mobile-first) */
+	--bp-tablet: 768px;
+	--bp-desktop--small: 992px;
+	--bp-desktop: 1200px;
+	--bp-desktop--large: 1440px;
+
+	/* font sizes */
+	--fs-text--small: 1rem;
+	--fs-text: 1.25rem;
+	--fs-text--large: 1.5rem;
+	--fs-title: 2rem;
+	--fs-title--large: 3.5rem;
+	--fs-title--larger: 4.5rem;
+
+	/* font weights */
+	--fw: 400;
+	--fw--bold: 700;
+	--fw--bolder: 800;
+
+	background-color: var(--c-background);
+	color: var(--c-text);
+	font-family: 'Barlow', sans-serif;
+	line-height: 1.5;
+}
+
+body {
+  font-size: var(--fs-text);
+}
+
+h1, h2, h3 {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-weight: var(--fw--bolder);
+	font-size: var(--fs-title);
+	text-transform: uppercase;
+}
+
+.screenreaders-only {
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+}

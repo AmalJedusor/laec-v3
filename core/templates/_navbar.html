@@ -1,39 +1,23 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-   <div class="container">
-       <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-        data-target="#navbar" aria-expanded="false" aria-controls="navbar"><span
-            class="sr-only">Afficher la navigation</span><i class="fa fa-fw fa-navicon"
-            aria-hidden="true"></i></button>
-           <a class="navbar-brand" accesskey="1"
-               title="L&#039;Avenir En Commun, le programme pour l'Union Populaire'" rel="home"
-               data-load-display href="/"><img src="/static/assets/svg/LAEC-logo.svg"
-                   style="max-height: 50px; transform: scale(0.8); transform-origin: center left;"
-                   data-no-svg-src="/static/laec-fr-couleur-marge-interne.png"
-                   alt="Logotype « l'avenir en commun »"><span class="sr-only">L'avenir en commun</span></a>
-       </div>
-       <div id="navbar" class="navbar-collapse collapse">
-           <ul class="nav navbar-nav">
-             <li><a title="Sommaire complet du programme" data-load-display href="/sommaire">
-                     <i class="fa fa-fw fa-list-ul" aria-hidden="true"></i><span class="hidden-sm">
-                         Table
-                         des matières</span><span class="visible-sm-inline"> Sommaire</span></a></li>
-                         <li><a title="Livrets et plans" data-load-display href="/livrets-et-plans">
-                                 <i class="fa fa-fw fa-book" aria-hidden="true"></i><span class="hidden-sm">
-                                     Livrets et plans</span><span class="visible-sm-inline"> Livrets et plans</span></a></li>
-                         <li><a title="Les visuels mesures" data-load-display href="/visuels">
-                                 <i class="fa fa-fw fa-image" aria-hidden="true"></i><span class="hidden-sm">
-                                     Visuels</span><span class="visible-sm-inline"> Visuels</span></a></li>
-
-           </ul>
-           <form action="/recherche" class="navbar-form navbar-right navbar-searchbox-form form-total-loading">
-               <div class="input-group"><input type="text" id="searchbox" name="q" autocomplete="off"
-                       class="form-control" placeholder="Ex: Partage, écologie…"><span
-                       class="input-group-btn"><button type="submit" class="btn btn-default"><span
-                               class="sr-only">Rechercher</span><i class="fa fa-fw fa-search"
-                               aria-hidden="true"></i></button></span></div>
-           </form>
-       </div>
-   </div>
-   <div class="flash-group"></div>
-</nav>
+<header class="header">
+    <nav class="header__nav">
+      <a href="/"><img src="/static/frontpop_white_logo.png" alt="logo du nouveau front populaire" class="header__nav-home"></a>
+  
+      <div class="header__nav--group">
+        <menu class="header__links">
+          <li><a href="https://x.com/DiscordGauche" target="_blank"><i class="fa-brands fa-x-twitter"></i></a></li>
+          <li><a href="https://facebook.com/discordgauche" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
+          <li><a href="https://instagram.com/discord.barricade/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+          <li><a href="https://youtube.com/@la_barricade/videos" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+          <li><a href="https://tiktok.com/@distok_populaire" target="_blank"><i class="fa-brands fa-tiktok"></i></a></li>
+          <li><a href="https://twitch.tv/la_barricade" target="_blank"><i class="fa-brands fa-twitch"></i></a></li>
+          <li><a href="https://discord.gg/barricade" target="_blank"><i class="fa-brands fa-discord"></i></a></li>
+        </menu>
+    
+        <div class="header__nav--search">
+          <input type="search" name="" id="" placeholder="Économie, justice, écologie...">
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  

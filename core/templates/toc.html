@@ -1,54 +1,87 @@
 {% extends 'base.html' %}
 {% block html_class %}page-toc{% endblock %}
 {% block body %}
+<script>
+  let tab = 'tab1';
+  function tabSelect(event) {
+    event.preventDefault();
+    tab = event.currentTarget.attributes.href.value.replace('#', '');
+    const tabSelectors = Array.from(document.getElementsByClassName('roadmap__tab'));
+    tabSelectors.forEach(tabSelector => tabSelector.classList.remove('active'));
+    document.getElementById(`selector-${tab}`).classList.add('active');
+    const roadmapTitle = document.getElementById('roadmap-title');
+    roadmapTitle.classList.remove('tab1', 'tab2', 'tab3');
+    roadmapTitle.classList.add(tab);
+  }
+</script>
 <body id="body">
-   {% include "_jump_link.html" %}
-   {% include "_navbar.html" %}
-   <div class="jumbotron">
-      <div class="container">
-         <h1><b><i class="fa fa-fw fa-list-ul" aria-hidden="true"></i> Table des matières </b></h1>
-         <p class="sidelines" aria-hidden="true"><i class="fa fa-phi"></i></p>
-         <a rel="start" data-load-display="" href="/"><i class="fa fa-fw fa-home" aria-hidden="true"></i> Retour à l'accueil</a>
-      </div>
-   </div>
-   <div class="wrap-container-main" id="main">
-      <div class="container container-main">
-         <div class="row">
-         {% include '_sidebar.html' %}
-         <article class="col-md-8 col-md-pull-4 main-content-container" id="contenu" role="main">
-            <nav class="toc list-group" role="navigation">
-            {% for part in parts %}
-            <a
-               id="partie-{{part.number}}"
-               class="list-group-item toc-chapter toc-chapter-{{part.number}} no-outline"
-               href="/partie/{{part.number}}/{{part.slug}}">
-               <i class="fa fa-fw fa-2x fa-pull-right icon icon-part-{{part.number}}" aria-hiddent="true"></i>
-                                 <h3>{{part.title}}</h3>
-            </a>
-            <div class="list-group-item list-group-separator" aria-hidden="true">
-            </div>
-                  {% for article in part.article_set.all %}
-                  <a
-                     class="list-group-item toc-section toc-chapter-{{part.number}} no-outline"
-                     href="/section/{{article.number}}/{{article.slug}}">
-                     <span class="label label-default">{{article.number}}</span> {{article.title}}
-                  </a>
-                  {% endfor %}
-                  <div class="list-group-item list-group-separator" aria-hidden="true">
-
-                  </div>
-            <div class="list-group-item list-group-separator" aria-hidden="true">
-               <p class="sidelines"><i class="fa fa-fw fa-scissors"></i></p>
-            </div>
+    {% include "_jump_link.html" %}
+    {% include "_navbar.html" %}
+    <main>
+      <img src="/static/img/jumbo.png" alt="" class="roadmap-page__image">
+    
+      <article class="roadmap-page__introduction">
+        <h1 class="roadmap-page__introduction-title">Un cap clair pour le nouveau front populaire</h1>
+    
+        <p class="roadmap-page__introduction-text">Le Nouveau Front Populaire rassemble des femmes et des hommes issus d'organisations politiques, syndicales, associatives et citoyennes qui s'unissent pour construire un programme de rupture avec la politique d'Emmanuel Macron, répondant aux urgences sociales, écologiques, démocratiques et pour la paix.<br/><br/>Nous combattons le projet raciste et de casse sociale de l'extrême droite et voulons l'empêcher d'arriver au pouvoir.<br/><br/>Nous refusons les attaques contre nos libertés démocratiques et la répression vis à vis des forces sociales et associatives, particulièrement bafouées ces  dernières années.<br/><br/>Nous luttons contre la multiplication des discours de haine et contre la prolifération des menaces et des violences qui abîment notre démocratie.<br/><br/>C'est pourquoi notre majorité et nos parlementaires s'engagent à porter ces principes éthiques tout au long de la mandature en refusant la diffusion de fausses informations, la calomnie, le cyberharcèlement, et les incitations à la haine, y compris sur internet.<br/><br/>En donnant une majorité de députés au Nouveau Front Populaire, les Françaises et les Français écriront une nouvelle page de l'histoire de France.<br/><br/>Les 30 juin et 7 juillet, votez pour le Nouveau Front Populaire !</p>
+      </article>
+    
+      <div class="roadmap">
+        <nav class="roadmap__nav">
+          <menu class="roadmap__tabs-container">
+            <li class="roadmap__tab tab1 active" id="selector-tab1">
+              <a href="#tab1"  onclick="tabSelect(event)">
+                <div>
+                  <p>15 premiers jours</p>
+                  <p class="roadmap__tab-title">La rupture</p>
+                </div>
+              </a>
+              <span></span>
+            </li>
+            <li class="roadmap__tab tab2" id="selector-tab2">
+              <a href="#tab2" onclick="tabSelect(event)">
+                <div>
+                  <p>100 premiers jours</p>
+                  <p class="roadmap__tab-title">L'été des bifurcations</p>
+                </div>
+              </a>
+              <span></span>
+            </li>
+            <li class="roadmap__tab tab3" id="selector-tab3">
+              <a href="#tab3"  onclick="tabSelect(event)">
+                <div>
+                  <p>Les mois suivants</p>
+                  <p class="roadmap__tab-title">Les transformations</p>
+                </div>
+              </a>
+              <span></span>
+            </li>
+          </menu>
+        </nav>
+        {% for part in parts %}
+        <section class="roadmap__content">
+          <h2 class="roadmap__title" id="roadmap-title">{{part.title}}</h2>
+          <p class="roadmap__introduction">{{part.content}}</p>
+     
+          <menu class="roadmap__steps">
+            {% for article in part.article_set.all %}
+            <li>
+              <a href="/section/{{article.number}}/{{article.slug}}">
+                <h3>{{article.title}}<span class="arrow"></span></h3>
+                <span class="roadmap__steps-background"></span>
+              </a>
+            </li>
             {% endfor %}
-            <a href="#body" id="back-to-top" data-do-scroll-to="800" title="Retour en haut de la page" class="">
-               <i class="fa fa-arrow-up" aria-hidden="true"></i>
-               <span> Retour en haut de page</span>
-            </a>
-         </div>
+          </menu>
+        </section>
+        {% endfor %}
       </div>
-      {% include '_footer.html' %}
+      
+    </main>
+    
+    
+    {% include '_footer.html' %}
 
-   </body>
+</body>
 </html>
 {% endblock body %}

@@ -1,7 +1,7 @@
 import glob, os
 
 from django.core.management.base import BaseCommand
-from core.models import Chapter, Article, UrlData, Part, Measure
+from core.models import Article, UrlData, Part, Measure
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
@@ -13,18 +13,16 @@ class Command(BaseCommand):
         import json
         import os
 
-        try:
-            response = requests.get('https://docs.google.com/spreadsheet/ccc?key=1NBkcDOXTXGwajAWpnueTUzihJ1z_j2ydD3dO6-iuA-k&output=csv')
-            assert response.status_code == 200, 'Wrong status code'
-            csvfile = io.StringIO(response.content.decode('utf8'))
-            csvfile.readline()
-            reader = csv.DictReader(csvfile)
-            reader = list(reader)
-            with open(os.path.join('core','data','gsheet.json'),'w') as f:
-                f.write(json.dumps(reader))
-        except:
-            with open(os.path.join('core','data','gsheet.json'),'r') as f:
-                reader = json.loads(f.read())
+     
+        response = requests.get('https://docs.google.com/spreadsheets/d/11Pdnazv6jegUfa-YabE9wG3RRjBNxiiIu0-32nQD4hk/export?format=csv&gid=1569985388')
+        assert response.status_code == 200, 'Wrong status code'
+        csvfile = io.StringIO(response.content.decode('utf8'))
+        csvfile.readline()
+        reader = csv.DictReader(csvfile)
+        reader = list(reader)
+        with open(os.path.join('core','data','gsheet.json'),'w') as f:
+            f.write(json.dumps(reader))
+
 
         import hashlib
         sections_path = os.path.join('generation_visuels','sections.json')
@@ -53,18 +51,18 @@ class Command(BaseCommand):
         nmesure = 0
         mesures_md = dict((m.number,m) for m in Measure.objects.all())
         articles_md = dict((m.number,m) for m in Article.objects.all())
-        chapters_md = dict((m.number,m) for m in Chapter.objects.all())
         parts_md = dict((m.number,m) for m in Part.objects.all())
 
 
         for row in reader:
             if row['PARTIE']!= partie:
                 partie = row['PARTIE']
-
-                parts_md[str(npartie)].page = row['PAGE']
-                parts_md[str(npartie)].shortlink = "p{partie}".format(partie=npartie)
-
-                parts_md[str(npartie)].save()
+                print(parts_md)
+                print("partie: " + str(partie))
+                
+                print("ppartie: " + str(npartie))
+                parts_md[str(npartie -1)].shortlink = "p{partie}".format(partie=npartie)
+                parts_md[str(npartie-1)].save()
 
                 npartie += 1
 
@@ -72,11 +70,6 @@ class Command(BaseCommand):
             if row['CHAPITRE'].strip() and row['CHAPITRE'].strip() != chapitre:
                 chapitre = row['CHAPITRE'].strip()
                 nchapitre += 1
-                chapters_md[str(nchapitre)].page = row['PAGE']
-
-                chapters_md[str(nchapitre)].shortlink = "c{chapitre}".format(chapitre=nchapitre)
-                chapters_md[str(nchapitre)].save()
-
                 chapitres.append((npartie,partie,nchapitre,chapitre.split(':')[1].strip()))
             if row['SECTION N°'] and row['SECTION N°'] != str(nsection):
                 section = row['SECTION'].strip()
@@ -85,7 +78,6 @@ class Command(BaseCommand):
                     print('PB',row)
                     exit()
 
-                articles_md[nsection].page = row['PAGE']
                 articles_md[nsection].shortlink = "s{section}".format(section=nsection)
                 articles_md[nsection].save()
 
@@ -105,8 +97,10 @@ class Command(BaseCommand):
                 #    print(nsection,nmesure)
                 #    print(row['MESURE'])
                 #    print(mesures_md[nmesure].text)
-
-                mesures_md[nmesure].page = row['PAGE']
+                print(nmesure)
+                print(nmesure)
+                print(nsection)
+                print(mesures_md)
                 mesures_md[nmesure].shortlink = "s{section}m{mesure}".format(section=nsection,mesure=nmesure)
 
                 mesures_md[nmesure].save()

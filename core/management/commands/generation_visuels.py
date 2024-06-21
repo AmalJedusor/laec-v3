@@ -27,7 +27,7 @@ class Command(BaseCommand):
         import io
         import re
 
-        response = requests.get('https://docs.google.com/spreadsheet/ccc?key=1NBkcDOXTXGwajAWpnueTUzihJ1z_j2ydD3dO6-iuA-k&output=csv')
+        response = requests.get('https://docs.google.com/spreadsheets/d/11Pdnazv6jegUfa-YabE9wG3RRjBNxiiIu0-32nQD4hk/export?format=csv&gid=1569985388')
         assert response.status_code == 200, 'Wrong status code'
         csvfile = io.StringIO(response.content.decode('utf8'))
         csvfile.readline()
@@ -144,7 +144,7 @@ class Command(BaseCommand):
             print(name)
 
             if not os.path.exists(jpgpath):
-                im1 = Image.open(imgpath)
+                im1 = Image.open(jpgpath)
                 im1.convert('RGB').save(jpgpath)
                 print(jpgpath)
 
